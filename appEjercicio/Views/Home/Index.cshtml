@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Administrador</h1>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table table-bordered">
+            <tr>
+                <th>Materias</th>
+                <th>Docentes</th>
+                <th>Alumnos</th>
+                <th>Asignacion Materias</th>
+
+            </tr>
+             
+ 
+                <tr>
+                    <td>
+                        <input type="button" value="Entrar" onclick="document.location.href = '@Url.Content("~/materias/")'" class="btn btn-success" />
+                    </td>
+                    <td>
+                        <input type="button" value="Entrar"onclick="document.location.href = '@Url.Content("~/Docentes/")'"  class="btn btn-success"/>
+                    </td>
+                    <td>
+                        <input type="button"value="Entrar" onclick="document.location.href = '@Url.Content("~/Alumnos/")'" class="btn btn-success"/>
+                    </td>
+                    <td>
+                        <input type="button" value="Entrar"  class="btn btn-success" />
+                       
+                    </td>
+                </tr>
+           
+        </table>
+    </div>
+</div>
+
+
+
+
+ 

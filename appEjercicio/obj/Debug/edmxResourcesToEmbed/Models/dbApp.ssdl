@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="crudModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admon">
+    <Key>
+      <PropertyRef Name="idAdmon" />
+    </Key>
+    <Property Name="idAdmon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="idRol" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="alumno">
+    <Key>
+      <PropertyRef Name="idAlumno" />
+    </Key>
+    <Property Name="idAlumno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="idRol" Type="int" Nullable="false" />
+    <Property Name="idGrado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="asignacion_materia">
+    <Key>
+      <PropertyRef Name="idAsignacion" />
+    </Key>
+    <Property Name="idAsignacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idDocente" Type="int" Nullable="false" />
+    <Property Name="idMateria" Type="int" Nullable="false" />
+    <Property Name="idGrado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bimestre">
+    <Key>
+      <PropertyRef Name="idBimestre" />
+    </Key>
+    <Property Name="idBimestre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="docente">
+    <Key>
+      <PropertyRef Name="idDocente" />
+    </Key>
+    <Property Name="idDocente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="idRol" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="grado">
+    <Key>
+      <PropertyRef Name="idGrado" />
+    </Key>
+    <Property Name="idGrado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="materia">
+    <Key>
+      <PropertyRef Name="idMateria" />
+    </Key>
+    <Property Name="idMateria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="nota_f">
+    <Key>
+      <PropertyRef Name="idNota" />
+    </Key>
+    <Property Name="idNota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idAlumno" Type="int" Nullable="false" />
+    <Property Name="idAsignacion" Type="int" Nullable="false" />
+    <Property Name="idBimestre" Type="int" Nullable="false" />
+    <Property Name="notaFinal" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="rol">
+    <Key>
+      <PropertyRef Name="idRol" />
+    </Key>
+    <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_Alumno_nota">
+    <End Role="alumno" Type="Self.alumno" Multiplicity="1" />
+    <End Role="nota_f" Type="Self.nota_f" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="alumno">
+        <PropertyRef Name="idAlumno" />
+      </Principal>
+      <Dependent Role="nota_f">
+        <PropertyRef Name="idAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Asignacion_materia_nota">
+    <End Role="asignacion_materia" Type="Self.asignacion_materia" Multiplicity="1" />
+    <End Role="nota_f" Type="Self.nota_f" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asignacion_materia">
+        <PropertyRef Name="idAsignacion" />
+      </Principal>
+      <Dependent Role="nota_f">
+        <PropertyRef Name="idAsignacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Bimestre_nota">
+    <End Role="bimestre" Type="Self.bimestre" Multiplicity="1" />
+    <End Role="nota_f" Type="Self.nota_f" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bimestre">
+        <PropertyRef Name="idBimestre" />
+      </Principal>
+      <Dependent Role="nota_f">
+        <PropertyRef Name="idBimestre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Docente_asignacion">
+    <End Role="docente" Type="Self.docente" Multiplicity="1" />
+    <End Role="asignacion_materia" Type="Self.asignacion_materia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="docente">
+        <PropertyRef Name="idDocente" />
+      </Principal>
+      <Dependent Role="asignacion_materia">
+        <PropertyRef Name="idDocente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Grado_alumno">
+    <End Role="grado" Type="Self.grado" Multiplicity="1" />
+    <End Role="alumno" Type="Self.alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="grado">
+        <PropertyRef Name="idGrado" />
+      </Principal>
+      <Dependent Role="alumno">
+        <PropertyRef Name="idGrado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Grado_asignacion">
+    <End Role="grado" Type="Self.grado" Multiplicity="1" />
+    <End Role="asignacion_materia" Type="Self.asignacion_materia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="grado">
+        <PropertyRef Name="idGrado" />
+      </Principal>
+      <Dependent Role="asignacion_materia">
+        <PropertyRef Name="idGrado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Materia_asignacion">
+    <End Role="materia" Type="Self.materia" Multiplicity="1" />
+    <End Role="asignacion_materia" Type="Self.asignacion_materia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materia">
+        <PropertyRef Name="idMateria" />
+      </Principal>
+      <Dependent Role="asignacion_materia">
+        <PropertyRef Name="idMateria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Rol_admon">
+    <End Role="rol" Type="Self.rol" Multiplicity="1" />
+    <End Role="admon" Type="Self.admon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rol">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="admon">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Rol_alumno">
+    <End Role="rol" Type="Self.rol" Multiplicity="1" />
+    <End Role="alumno" Type="Self.alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rol">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="alumno">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Rol_docente">
+    <End Role="rol" Type="Self.rol" Multiplicity="1" />
+    <End Role="docente" Type="Self.docente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rol">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="docente">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="crudModelStoreContainer">
+    <EntitySet Name="admon" EntityType="Self.admon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="alumno" EntityType="Self.alumno" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="asignacion_materia" EntityType="Self.asignacion_materia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bimestre" EntityType="Self.bimestre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="docente" EntityType="Self.docente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="grado" EntityType="Self.grado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="materia" EntityType="Self.materia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nota_f" EntityType="Self.nota_f" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rol" EntityType="Self.rol" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_Alumno_nota" Association="Self.fk_Alumno_nota">
+      <End Role="alumno" EntitySet="alumno" />
+      <End Role="nota_f" EntitySet="nota_f" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Asignacion_materia_nota" Association="Self.fk_Asignacion_materia_nota">
+      <End Role="asignacion_materia" EntitySet="asignacion_materia" />
+      <End Role="nota_f" EntitySet="nota_f" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Bimestre_nota" Association="Self.fk_Bimestre_nota">
+      <End Role="bimestre" EntitySet="bimestre" />
+      <End Role="nota_f" EntitySet="nota_f" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Docente_asignacion" Association="Self.fk_Docente_asignacion">
+      <End Role="docente" EntitySet="docente" />
+      <End Role="asignacion_materia" EntitySet="asignacion_materia" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Grado_alumno" Association="Self.fk_Grado_alumno">
+      <End Role="grado" EntitySet="grado" />
+      <End Role="alumno" EntitySet="alumno" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Grado_asignacion" Association="Self.fk_Grado_asignacion">
+      <End Role="grado" EntitySet="grado" />
+      <End Role="asignacion_materia" EntitySet="asignacion_materia" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Materia_asignacion" Association="Self.fk_Materia_asignacion">
+      <End Role="materia" EntitySet="materia" />
+      <End Role="asignacion_materia" EntitySet="asignacion_materia" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Rol_admon" Association="Self.fk_Rol_admon">
+      <End Role="rol" EntitySet="rol" />
+      <End Role="admon" EntitySet="admon" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Rol_alumno" Association="Self.fk_Rol_alumno">
+      <End Role="rol" EntitySet="rol" />
+      <End Role="alumno" EntitySet="alumno" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Rol_docente" Association="Self.fk_Rol_docente">
+      <End Role="rol" EntitySet="rol" />
+      <End Role="docente" EntitySet="docente" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

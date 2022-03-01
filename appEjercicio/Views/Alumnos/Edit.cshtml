@@ -1,0 +1,33 @@
+﻿@model appEjercicio.Models.ViewModels.EditAlumnoViewModel
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Edit", "Alumnos", FormMethod.Post, new { role = "Form", @class = "" }))
+        //para apertura de formulario, utilizando el metodo post
+        {
+            @Html.HiddenFor(d => d.idAlumno)
+            @Html.LabelFor(d => d.nombre)//d => alias
+            @Html.TextBoxFor(d => d.nombre, new { @class = "form-control" })
+            @Html.ValidationMessage("nombre", new { @class = "text-danger" })
+
+            @Html.LabelFor(d => d.idGrado)//d => alias
+            @Html.TextBoxFor(d => d.idGrado, new { @class = "form-control" })
+            @Html.ValidationMessage("Grado", new { @class = "text-danger" })
+
+
+
+            <div style="text-align:right;">
+                <br>
+                <input type="submit" class="btn btn-success" value="Guardar" />
+            </div>
+        }
+
+    </div>
+</div>
+
+

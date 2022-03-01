@@ -1,0 +1,75 @@
+use crud_ejercicio
+CREATE TABLE rol
+(
+idRol int IDENTITY(1,1) PRIMARY KEY,
+nombre varchar(255) NOT NULL,
+)
+
+CREATE TABLE grado
+(
+idGrado int IDENTITY(1,1) PRIMARY KEY,
+nombre varchar(255) NOT NULL,
+)
+
+CREATE TABLE bimestre
+(
+idBimestre int IDENTITY(1,1) PRIMARY KEY,
+nombre varchar(255) NOT NULL,
+)
+
+CREATE TABLE materia
+(
+idMateria int IDENTITY(1,1) PRIMARY KEY,
+nombre varchar(255) NOT NULL,
+)
+
+CREATE TABLE docente
+(
+idDocente int IDENTITY(1,1) PRIMARY KEY,
+nombre varchar(255) NOT NULL,
+idRol int NOT Null,
+CONSTRAINT fk_Rol_docente FOREIGN KEY (idRol) REFERENCES rol (idRol)
+)
+
+CREATE TABLE admon
+(
+idAdmon int IDENTITY(1,1) PRIMARY KEY,
+nombre varchar(255) NOT NULL,
+idRol int NOT Null,
+CONSTRAINT fk_Rol_admon FOREIGN KEY (idRol) REFERENCES rol (idRol)
+)
+
+CREATE TABLE alumno
+(
+idAlumno int IDENTITY(1,1) PRIMARY KEY,
+nombre varchar(255) NOT NULL,
+idRol int NOT NULL,
+idGrado int NOT NULL
+CONSTRAINT fk_Rol_alumno FOREIGN KEY (idRol) REFERENCES rol (idRol),
+CONSTRAINT fk_Grado_alumno FOREIGN KEY (idGrado) REFERENCES grado (idGrado)
+)
+
+CREATE TABLE asignacion_materia
+(
+idAsignacion int IDENTITY(1,1) PRIMARY KEY,
+idDocente int NOT NULL,
+idMateria int NOT NULL,
+idGrado int NOT NULL,
+CONSTRAINT fk_Docente_asignacion FOREIGN KEY (idDocente) REFERENCES docente (idDocente),
+CONSTRAINT fk_Materia_asignacion FOREIGN KEY (idMateria) REFERENCES materia (idMateria),
+CONSTRAINT fk_Grado_asignacion FOREIGN KEY (idGrado) REFERENCES grado (idGrado)
+)
+ 
+
+
+ CREATE TABLE nota_f
+(
+idNota int IDENTITY(1,1) PRIMARY KEY,
+idAlumno int NOT NULL,
+idAsignacion int NOT NULL,
+idBimestre int NOT NULL,
+notaFinal  int NOT NULL,
+CONSTRAINT fk_Alumno_nota FOREIGN KEY (idAlumno) REFERENCES alumno (idAlumno),
+CONSTRAINT fk_Asignacion_materia_nota FOREIGN KEY (idAsignacion) REFERENCES asignacion_materia (idAsignacion),
+CONSTRAINT fk_Bimestre_nota FOREIGN KEY (idBimestre) REFERENCES bimestre (idBimestre)
+)

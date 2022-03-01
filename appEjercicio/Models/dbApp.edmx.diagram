@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2ce84d648e544ed5830999c02179c66f" Name="Diagram1">
+        <EntityTypeShape EntityType="crudModel.admon" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="crudModel.alumno" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="crudModel.asignacion_materia" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="crudModel.bimestre" Width="1.5" PointX="6" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="crudModel.docente" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="crudModel.grado" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="crudModel.materia" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="crudModel.nota_f" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="crudModel.rol" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="crudModel.fk_Rol_admon" ManuallyRouted="false" />
+        <AssociationConnector Association="crudModel.fk_Alumno_nota" ManuallyRouted="false" />
+        <AssociationConnector Association="crudModel.fk_Grado_alumno" ManuallyRouted="false" />
+        <AssociationConnector Association="crudModel.fk_Rol_alumno" ManuallyRouted="false" />
+        <AssociationConnector Association="crudModel.fk_Asignacion_materia_nota" ManuallyRouted="false" />
+        <AssociationConnector Association="crudModel.fk_Docente_asignacion" ManuallyRouted="false" />
+        <AssociationConnector Association="crudModel.fk_Grado_asignacion" ManuallyRouted="false" />
+        <AssociationConnector Association="crudModel.fk_Materia_asignacion" ManuallyRouted="false" />
+        <AssociationConnector Association="crudModel.fk_Bimestre_nota" ManuallyRouted="false" />
+        <AssociationConnector Association="crudModel.fk_Rol_docente" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

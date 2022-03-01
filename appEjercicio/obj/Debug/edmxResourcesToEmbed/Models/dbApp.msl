@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="crudModelStoreContainer" CdmEntityContainer="crudEntities">
+    <EntitySetMapping Name="admon">
+      <EntityTypeMapping TypeName="crudModel.admon">
+        <MappingFragment StoreEntitySet="admon">
+          <ScalarProperty Name="idAdmon" ColumnName="idAdmon" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="alumno">
+      <EntityTypeMapping TypeName="crudModel.alumno">
+        <MappingFragment StoreEntitySet="alumno">
+          <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="idGrado" ColumnName="idGrado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="asignacion_materia">
+      <EntityTypeMapping TypeName="crudModel.asignacion_materia">
+        <MappingFragment StoreEntitySet="asignacion_materia">
+          <ScalarProperty Name="idAsignacion" ColumnName="idAsignacion" />
+          <ScalarProperty Name="idDocente" ColumnName="idDocente" />
+          <ScalarProperty Name="idMateria" ColumnName="idMateria" />
+          <ScalarProperty Name="idGrado" ColumnName="idGrado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bimestre">
+      <EntityTypeMapping TypeName="crudModel.bimestre">
+        <MappingFragment StoreEntitySet="bimestre">
+          <ScalarProperty Name="idBimestre" ColumnName="idBimestre" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="docente">
+      <EntityTypeMapping TypeName="crudModel.docente">
+        <MappingFragment StoreEntitySet="docente">
+          <ScalarProperty Name="idDocente" ColumnName="idDocente" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="grado">
+      <EntityTypeMapping TypeName="crudModel.grado">
+        <MappingFragment StoreEntitySet="grado">
+          <ScalarProperty Name="idGrado" ColumnName="idGrado" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="materia">
+      <EntityTypeMapping TypeName="crudModel.materia">
+        <MappingFragment StoreEntitySet="materia">
+          <ScalarProperty Name="idMateria" ColumnName="idMateria" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nota_f">
+      <EntityTypeMapping TypeName="crudModel.nota_f">
+        <MappingFragment StoreEntitySet="nota_f">
+          <ScalarProperty Name="idNota" ColumnName="idNota" />
+          <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+          <ScalarProperty Name="idAsignacion" ColumnName="idAsignacion" />
+          <ScalarProperty Name="idBimestre" ColumnName="idBimestre" />
+          <ScalarProperty Name="notaFinal" ColumnName="notaFinal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rol">
+      <EntityTypeMapping TypeName="crudModel.rol">
+        <MappingFragment StoreEntitySet="rol">
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
